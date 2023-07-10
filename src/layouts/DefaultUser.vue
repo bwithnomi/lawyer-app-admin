@@ -87,10 +87,10 @@
         <q-space />
 
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn round dense flat color="white" icon="notifications">
+          <!-- <q-btn round dense flat color="white" icon="notifications">
             <q-badge color="yellow" text-color="dark" floating> 2 </q-badge>
             <q-tooltip>Notifications</q-tooltip>
-          </q-btn>
+          </q-btn> -->
           <q-btn
             round
             dense
@@ -101,7 +101,7 @@
           >
             <q-tooltip>Logout</q-tooltip>
           </q-btn>
-          <q-btn round flat>
+          <q-btn round flat :label="`${userStore?.user?.data?.name}&nbsp;&nbsp;`"  color="yellow-8">
             <q-avatar size="26px" color="white">
               <img :src="showImage(userStore.user?.data?.profile_image)" />
             </q-avatar>
@@ -219,10 +219,10 @@
             no-caps
             size="26px"
             class="GPL__side-btn"
-            :to="{ path: '/profile' }"
+            :to="{ path: '/users' }"
           >
             <q-icon size="22px" name="account_circle" />
-            <div class="GPL__side-btn__label">Profile</div>
+            <div class="GPL__side-btn__label">Users</div>
           </q-btn>
 
           <q-btn
@@ -233,46 +233,10 @@
             no-caps
             size="26px"
             class="GPL__side-btn"
-            :to="{ path: '/search' }"
+            :to="{ path: '/cases' }"
           >
-            <q-icon size="22px" name="search" />
-            <div class="GPL__side-btn__label">Find</div>
-          </q-btn>
-
-          <q-btn
-            round
-            flat
-            color="grey-8"
-            stack
-            no-caps
-            size="26px"
-            class="GPL__side-btn"
-            :to="{ path: '/chat' }"
-          >
-            <q-icon size="22px" name="chat" />
-            <div class="GPL__side-btn__label">Chat</div>
-            <q-badge
-              floating
-              color="red"
-              text-color="white"
-              style="top: 8px; right: 16px"
-            >
-              1
-            </q-badge>
-          </q-btn>
-
-          <q-btn
-            round
-            flat
-            color="grey-8"
-            stack
-            no-caps
-            size="26px"
-            class="GPL__side-btn"
-            :to="{ path: '/requests' }"
-          >
-            <q-icon size="22px" name="group" />
-            <div class="GPL__side-btn__label">Requests</div>
+            <q-icon size="22px" name="cases" />
+            <div class="GPL__side-btn__label">Cases</div>
           </q-btn>
         </div>
       </q-page-sticky>
@@ -312,10 +276,8 @@ const userLogoutLocal = async () => {
 
 let links1 = [
   { icon: "home", text: "Home", link: "/" },
-  { icon: "account_circle", text: "Profile", link: "/profile" },
-  { icon: "search", text: "Find", link: "/search" },
-  { icon: "chat", text: "Chat", link: "/chat" },
-  { icon: "group", text: "Requests", link: "/requests" },
+  { icon: "account_circle", text: "Users", link: "/users" },
+  { icon: "cases", text: "Cases", link: "/cases" },
 ];
 
 const showImage = (image: string | null | undefined): string => {

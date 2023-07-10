@@ -14,7 +14,7 @@
       <div class="col-12 col-md-6 q-py-md">
         <q-card style="width: 100%; max-width: 420px; margin: auto">
           <q-card-section>
-            <p class="text-h5 text-center text-dark">Login as user</p>
+            <p class="text-h5 text-center text-dark">Login as Admin</p>
 
             <q-form
               @submit.prevent=""
@@ -47,16 +47,6 @@
               ></FormInput>
               <div class="row justify-between">
                 <q-btn
-                  class=""
-                  type="submit"
-                  rounded
-                  flat
-                  color="dark"
-                  label="or Register now"
-                  no-caps
-                  :to="{path: '/signup'}"
-                />
-                <q-btn
                   :loading="logginIn"
                   type="submit"
                   rounded
@@ -66,22 +56,12 @@
                   no-caps
                   :disable="googleLogging"
                   @click="loginNow"
+                  class="full-width"
                 />
               </div>
             </q-form>
           </q-card-section>
         </q-card>
-        <p class="text-center q-mt-lg text-h6">or</p>
-        <div class="row justify-center">
-          <q-btn
-            @click="signInWithPopup"
-            :disable="googleLogging"
-            color="red-6"
-            rounded
-            label="Google login"
-            no-caps
-          ></q-btn>
-        </div>
       </div>
     </div>
   </div>
@@ -119,7 +99,7 @@ const loginNow = () => {
     if (success) {
       logginIn.value = true;
       await axiosApiClient
-        .post(`/user/login`, { ...loginModel.value })
+        .post(`/admin/login`, { ...loginModel.value })
         .then((res) => {
           userStore.user.data = res.data.data;
           userStore.user.token = res.data.data.token;

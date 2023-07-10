@@ -29,16 +29,16 @@ const router = createRouter({
           component: () => import("@/pages/user/HomeView.vue")
         },
         {
-          path: '/profile',
-          name: 'profile',
+          path: '/users',
+          name: 'users',
           meta: { requiresAuth: true },
-          component: () => import("@/pages/user/ProfileView.vue")
+          component: () => import("@/pages/user/UsersView.vue")
         },
         {
-          path: '/chat',
-          name: 'chat',
+          path: '/cases',
+          name: 'cases',
           meta: { requiresAuth: true },
-          component: () => import("@/pages/user/ChatView.vue")
+          component: () => import("@/pages/user/CasesView.vue")
         },
         {
           path: '/search',
